@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.RuntimeError'> The GPIO channel has not been set up as an OUTPUT"
+p3
+sS'layer'
+p4
+S'/home/pi/web2py/applications/domotica/controllers/default.py'
+p5
+sS'code'
+p6
+S'# -*- coding: utf-8 -*-\n\n# init setutp\n\nif not GPIO.getmode():\n        GPIO.setmode(GPIO.BCM)\nfor pin in ALL_PIN:\n    if GPIO.gpio_function(pin) !=0:\n        GPIO.setup(pin,GPIO.OUT)\n        GPIO.output(pin,GPIO.LOW)\n\ndef test():\n    print ALL_PIN\n    scheduler.queue_task(\'stop_current\', pvars=dict(direzione=\'up\',pin=ALL_PIN),start_time=request.now + timed(seconds=30),timeout = 60)\n    action=request.args[0]\n    to_return=\'test\'\n    if action==\'a_up\':\n        to_return=\'Ultima azione: alzo tutte le tapparelle\'\n        all_up()\n    elif action==\'s_all\':\n        stop_all()\n        to_return=\'Ultima azione: ferma tutto\'\n    elif action==\'a_dw\':\n        all_dw()\n        to_return=\'Ultima azione:  abbasso tutte le tapparelle\'\n    elif action==\'m_up\':\n        mansarda_up()\n        to_return=\'Ultima azione: alzo le tapparelle della mansarda\'\n    elif action==\'m_dw\':\n        mansarda_dw()\n        to_return=\'Ultima azione: abbasso le tapparelle della mansarda\'    \n    else:\n        to_return=\'Azione non ancora supportata\'\n        print action\n\n    return "jQuery(\'#target\').html(\'{}\');".format(to_return)\n\ndef index():\n    #pass\n    return dict(message=T(\'Prova domotica\'))\n\n\ndef user():\n    """\n    exposes:\n    http://..../[app]/default/user/login\n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    http://..../[app]/default/user/bulk_register\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users\n    """\n    return dict(form=auth())\n\n\n@cache.action()\ndef download():\n    """\n    allows downloading of uploaded files\n    http://..../[app]/default/download/[filename]\n    """\n    return response.download(request, db)\n\n\ndef call():\n    """\n    exposes services. for example:\n    http://..../[app]/default/call/jsonrpc\n    decorate with @services.jsonrpc the functions to expose\n    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv\n    """\n    return service()\n\nresponse._vars=response._caller(test)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/pi/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/home/pi/web2py/applications/domotica/controllers/default.py", line 80, in <module>\n  File "/home/pi/web2py/gluon/globals.py", line 417, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/pi/web2py/applications/domotica/controllers/default.py", line 19, in test\n    all_up()\n  File "/home/pi/web2py/applications/domotica/models/db.py", line 32, in all_up\n    stop_all()\n  File "/home/pi/web2py/applications/domotica/models/db.py", line 28, in stop_all\n    GPIO.output(pin, GPIO.LOW)\nRuntimeError: The GPIO channel has not been set up as an OUTPUT\n'
+p11
+s.
