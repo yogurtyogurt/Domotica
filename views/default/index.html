@@ -1,0 +1,53 @@
+{{extend 'layout.html'}}
+
+<div class='containr-fluid'>
+
+      <button type="button" class="btn btn-danger btn-block" onclick= "ajax('{{=URL('default', 'test',args=['s_all'])}}', [], ':eval')">Ferma tutto</button>  
+</div>
+
+<div class='well' style="background-color: 	#ffe5e5">
+    <div class="row">
+  <div class="col-md-6">
+      <button type="button" class="btn btn-success btn-block" onclick= "ajax('{{=URL('default', 'test',args=['a_up'])}}', [], ':eval')" >Tutto su</button>        
+        </div>
+  <div class="col-md-6">
+         <button type="button" class="btn btn-warning btn-block" onclick= "ajax('{{=URL('default', 'test',args=['a_dw'])}}', [], ':eval')" >Tutto giù</button>        
+        </div>
+</div></div>
+
+
+<div class='well' style="background-color: #f5f5f5">
+<div class="row">
+  <div class="col-md-6">
+      <button type="button" class="btn btn-success btn-block" onclick= "ajax('{{=URL('default', 'test',args=['m_up'])}}', [], ':eval')">Mansarda su</button>
+  </div>
+  <div class="col-md-6">
+    <button type="button" class="btn btn-warning btn-block" onclick= "ajax('{{=URL('default', 'test',args=['m_dw'])}}', [], ':eval')">Mansarda giù</button>
+  </div>
+</div></div>
+
+<div class='well'>
+    <div class="row">
+  <div class="col-md-6">
+      <button type="button" class="btn btn-success btn-block" onclick= "ajax('{{=URL('default', 'test',args=['p_up'])}}', [], ':eval')" >Piano1 su</button>
+   </div>
+  <div class="col-md-6">
+      <button type="button" class="btn btn-warning btn-block" onclick= "ajax('{{=URL('default', 'test',args=['p_dw'])}}', [], ':eval')" >Piano1 giù</button>
+   </div>
+</div></div>
+
+<div class='well'style="background-color: 	#e6ffe6">
+    <div class="row">
+  <div class="col-md-6">
+           <button type="button" class="btn btn-success btn-block" onclick= "ajax('{{=URL('default', 'test',args=['t_up'])}}', [], ':eval')" >Terra su</button>
+        </div>
+  <div class="col-md-6">
+        <button type="button" class="btn btn-warning btn-block" onclick= "ajax('{{=URL('default', 'test',args=['t_dw'])}}', [], ':eval')" >Terra giù</button>
+        </div>
+</div></div>
+
+
+
+<div id="target">
+
+</div>

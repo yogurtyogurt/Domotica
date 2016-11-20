@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.NameError'> global name 'all_up' is not defined"
+p3
+sS'layer'
+p4
+S'/home/pi/web2py/applications/domotica/controllers/default.py'
+p5
+sS'code'
+p6
+S'# -*- coding: utf-8 -*-\n# this file is released under public domain and you can use without limitations\n\n# -------------------------------------------------------------------------\n# This is a sample controller\n# - index is the default action of any application\n# - user is required for authentication and authorization\n# - download is for downloading files uploaded in the db (does streaming)\n# -------------------------------------------------------------------------\n\nfrom datetime import timedelta as timed\n\ndef test():\n    #print \'time={}\'.format(request.now)\n    #print \'schedulato={}\'.format(request.now + timed(seconds=30))\n    #scheduler.queue_task(\'stop_current\', pvars=dict(direzione=\'up\'),start_time=request.now + timed(seconds=30),timeout = 60)\n    action=request.args[0]\n    to_return=\'test\'\n    if action==\'a_up\':\n        to_return=\'Ultima azione: alzo tutte le tapparelle\'\n        all_up()\n    elif action==\'s_all\':\n        stop_all()\n        to_return=\'Ultima azione: ferma tutto\'\n    elif action==\'a_dw\':\n        all_dw()\n        to_return=\'Ultima azione:  abbasso tutte le tapparelle\'\n    elif action==\'m_up\':\n        mansarda_up()\n        to_return=\'Ultima azione: alzo le tapparelle della mansarda\'\n    elif action==\'m_dw\':\n        mansarda_dw()\n        to_return=\'Ultima azione: abbasso le tapparelle della mansarda\'    \n    else:\n        to_return=\'Azione non ancora supportata\'\n        print action\n\n    return "jQuery(\'#target\').html(\'{}\');".format(to_return)\n\ndef index():\n    #pass\n    return dict(message=T(\'Prova domotica\'))\n\n\ndef user():\n    """\n    exposes:\n    http://..../[app]/default/user/login\n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    http://..../[app]/default/user/bulk_register\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users\n    """\n    return dict(form=auth())\n\n\n@cache.action()\ndef download():\n    """\n    allows downloading of uploaded files\n    http://..../[app]/default/download/[filename]\n    """\n    return response.download(request, db)\n\n\ndef call():\n    """\n    exposes services. for example:\n    http://..../[app]/default/call/jsonrpc\n    decorate with @services.jsonrpc the functions to expose\n    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv\n    """\n    return service()\n\nresponse._vars=response._caller(test)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/pi/web2py/gluon/restricted.py", line 227, in restricted\n    exec ccode in environment\n  File "/home/pi/web2py/applications/domotica/controllers/default.py", line 82, in <module>\n  File "/home/pi/web2py/gluon/globals.py", line 417, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/pi/web2py/applications/domotica/controllers/default.py", line 21, in test\n    all_up()\nNameError: global name \'all_up\' is not defined\n'
+p11
+s.
